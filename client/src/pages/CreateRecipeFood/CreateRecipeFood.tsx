@@ -27,7 +27,6 @@ export const CreateRecipeFood = () => {
       return
     }
 
- 
     if (!user) {
       toast.error("Precisa estar autenticado para criar receita.")
       return
@@ -37,18 +36,14 @@ export const CreateRecipeFood = () => {
       name,
       description,
       url,
-      user_id: user.id,
+      user_id: user.user.id
     }
 
-    debugger
     try {
-      const {data: recipeCreated} = await api.post("/recipe", newRecipe, {
-        headers: {
-          Authorization: `Bearer ${user.token}`
-        }
-      })
+      api.defaults.headers.common.authorization = `Bearer ${user.token}`
+     
+      const {data: recipeCreated} = await api.post("/recipe", newRecipe)
 
-      console.log(recipeCreated)
       toast.success("Receita criada com sucesso")
       goForListRecipes()
 

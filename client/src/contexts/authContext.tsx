@@ -19,20 +19,13 @@ type SignInDatas = {
 }
 
 type User =  {
-  id: string;
-  name: string;
-  email: string;
-  token: string;
-};
-
-type UserReturn = {
   user: {
     id: string;
     name: string;
     email: string;
-  },
+  }
   token: string;
-}
+};
 
 export const AuthContext = createContext({} as ContextProps);
 
@@ -41,14 +34,15 @@ export function AuthProvider({children}: authContextChildren) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect( () => {
-    const userExists = window.localStorage.getItem("user")
+    let userExists = window.localStorage.getItem("user")
+    userExists = JSON.stringify(userExists)
 
     if (userExists) {
-  
+      const dataFormat = JSON.parse(userExists)
+      setUser(dataFormat)
     }
       
   }, []);
-
 
   async function signIn({email, password} : SignInDatas) {
 
@@ -62,6 +56,9 @@ export function AuthProvider({children}: authContextChildren) {
       const {data: userExists} = await api.post<User>("/user/authenticate", dataUser)
       
       setUser(userExists)
+      localStorage.setItem("user", JSON.stringify(userExists))
+
+      api.defaults.headers.common.authorization = `Bearer ${userExists.token}`
    
       return true
     } catch {
@@ -74,6 +71,7 @@ export function AuthProvider({children}: authContextChildren) {
     
     if(user) {
       setUser(null)
+      localStorage.removeItem("user")
     }
     
    
