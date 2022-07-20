@@ -1,6 +1,5 @@
-import bannerImg from "../../assets/banner.png"
 import logoImg from "../../assets/logo.png"
-
+import { SectionMain } from "../../components/SectionMain/SectionMain"
 import {DivContent} from "./home.styles"
 
 export const Home = () => {
@@ -9,14 +8,16 @@ export const Home = () => {
     <main>
       <img src={logoImg} alt="logo" width="80px"/>
       <h1>Realizar Login</h1>
-
+      <form>
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Senha" />
+        <button>
+          <span>Login</span>
+        </button>
+      </form>
 
     </main>
-    <section>
-      <h1>Crie e veja novas receitas</h1>
-      <p>Compartilhe e veja as principais receitas de hoje em dia!</p>
-      <img src={bannerImg} alt="banner" />
-    </section>
+    <SectionMain/>
   </DivContent>
   )
 }

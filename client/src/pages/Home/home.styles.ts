@@ -4,11 +4,8 @@ const DivContent = styled.div`
   display: grid;
   grid-template-columns: 60% 50%;
   overflow: hidden;
+  height: 100vh;
 
-
-  section {
-    background-color: #D2603C;
-  }
 `
 
 

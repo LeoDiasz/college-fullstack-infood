@@ -5,12 +5,15 @@ import {AppError} from "./errors/AppError"
 import {userRoutes} from "./routes/user/userRoutes"
 import {recipeRoutes} from "./routes/recipe/recipeRoutes"
 
+const cors = require("cors")
+
 const app = express();
 
 app.use(express.json())
 
 app.listen(3000, () => console.log("server is running"))
 
+app.use(cors())
 app.use(userRoutes)
 app.use(recipeRoutes)
 
