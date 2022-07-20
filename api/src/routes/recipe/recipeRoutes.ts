@@ -7,7 +7,7 @@ const recipeRoutes = Router()
 
 
 recipeRoutes.post("/recipe", ensureAuthenticated, new CreateRecipeController().execute)
-recipeRoutes.get("/recipe", ensureAuthenticated, new GetRecipesController().execute)
+recipeRoutes.get("/recipe", new GetRecipesController().execute)
 recipeRoutes.get("/recipe/:id", ensureAuthenticated, new GetRecipeController().execute)
 recipeRoutes.put("/recipe:id", ensureAuthenticated)
 recipeRoutes.delete("/recipe/:id", ensureAuthenticated)

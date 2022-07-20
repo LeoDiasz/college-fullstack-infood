@@ -1,22 +1,54 @@
-import logoImg from "../../assets/logo.png"
+import { FormEvent, useState } from "react"
+import {Toaster, toast} from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom"
+import { ButtonInitial } from "../../components/ButtonInitial/ButtonInitial"
 import { SectionMain } from "../../components/SectionMain/SectionMain"
-import {DivContent} from "./home.styles"
+import { Logo } from "../../components/Logo/Logo"
+import {useAuth} from "../../hooks/useAuth"
+import {DivContent, DivMain, FormContent, MainContent, InputContent} from "./home.styles"
+
+
 
 export const Home = () => {
+  const {user, signIn} = useAuth()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const enterInRecipes = useNavigate()
+
+  const signWithUser = async (event: FormEvent) => {
+    event.preventDefault()
+
+      try {
+        const result = await signIn({email, password})
+        
+        if(!result) {
+          throw new Error("Erro ao realizar login")
+        }
+      
+        toast.success("Logado com sucesso")
+      } catch {
+        toast.error("Erro ao realizar o login")
+        return
+      }
+  
+    enterInRecipes("/recipes")
+  }
+
   return (
   <DivContent>
-    <main>
-      <img src={logoImg} alt="logo" width="80px"/>
-      <h1>Realizar Login</h1>
-      <form>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Senha" />
-        <button>
-          <span>Login</span>
-        </button>
-      </form>
-
-    </main>
+    <Toaster></Toaster>
+    <MainContent>
+      <DivMain>
+        <Logo/>
+        <h1>Realizar Login</h1>
+        <FormContent onSubmit={signWithUser}>
+          <InputContent type="email" placeholder="Email" onChange={event => setEmail(event.target.value)}/>
+          <InputContent type="password" placeholder="Senha" onChange={event => setPassword(event.target.value)} />
+          <ButtonInitial text="Login"/>
+        </FormContent>
+        <Link to="/user/new">Criar conta</Link>
+      </DivMain>
+    </MainContent>
     <SectionMain/>
   </DivContent>
   )

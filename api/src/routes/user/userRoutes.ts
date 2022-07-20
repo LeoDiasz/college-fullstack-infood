@@ -9,7 +9,7 @@ const userRoutes = Router();
 
 userRoutes.post("/user/authenticate", new AuthenticateUserController().execute)
 userRoutes.post("/user", new CreateUserController().execute);
-userRoutes.get("/user", ensureAuthenticated,new GetUsersController().execute);
+userRoutes.get("/user", new GetUsersController().execute);
 userRoutes.get("/user/:id", ensureAuthenticated, new GetUserProfileController().execute)
 userRoutes.put("/user/:id", ensureAuthenticated)
 userRoutes.delete("/user/:id", ensureAuthenticated)

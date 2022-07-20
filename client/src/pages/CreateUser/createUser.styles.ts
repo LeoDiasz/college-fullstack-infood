@@ -9,7 +9,7 @@ const DivContent = styled.div`
 
 `
 
-const MainContent = styled.main`
+const SectionContent = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@ const MainContent = styled.main`
 
 `
 
-const DivMain = styled.div`
+const DivSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,6 +48,8 @@ const FormContent = styled.form`
   input, button {
     min-width: 300px;
   }
+
+  
 `
 
 const InputContent = styled.input`
@@ -68,4 +70,4 @@ const InputContent = styled.input`
   }
 `
 
-export {DivContent, MainContent, FormContent, DivMain, InputContent}
+export {DivContent, SectionContent, FormContent, DivSection, InputContent}

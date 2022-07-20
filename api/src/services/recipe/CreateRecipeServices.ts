@@ -5,14 +5,15 @@ interface CreateRecipeDatas {
   name: string;
   description: string;
   user_id: string;
+  url: string;
 }
 
 
 
 class CreateRecipeServices {
-  async services({name, description, user_id}:CreateRecipeDatas) {
+  async services({name, description, user_id, url}:CreateRecipeDatas) {
 
-    if(!name || !description || !user_id) {
+    if(!name || !description || !user_id || !url) {
       throw new AppError("Necessary all parameters.")
     }
 
@@ -26,7 +27,9 @@ class CreateRecipeServices {
       data: {
         user_id,
         name,
-        description
+        description,
+        url
+       
       }
     })
     
