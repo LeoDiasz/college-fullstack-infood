@@ -1,10 +1,16 @@
 import {DivSection} from "./main.styles"
 
-export const MainListRecipesText = () => {
+type MainListDatas = {
+  goForButton: () => void;
+  text: string;
+  textButton: string;
+}
+
+export const MainListRecipesText = ({goForButton, text, textButton}:MainListDatas) => {
   return (
     <DivSection>
-      <h1>Receitas</h1>
-      <button>Criar receita</button>
+      <h1>{text}</h1>
+      <button onClick={goForButton}>{textButton}</button>
     </DivSection>
   )
 }

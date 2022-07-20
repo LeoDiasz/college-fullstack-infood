@@ -47,10 +47,10 @@ export const CreateUser = () => {
         <DivSection>
           <Logo/>
           <h1>Criar conta</h1>
-          <FormContent  onClick={registerNewUser}>
-            <InputContent type="text" placeholder="Nome" onChange={event => setName(event.target.value)}/>
-            <InputContent type="email" placeholder="Email" onChange={event => setEmail(event.target.value)}/>
-            <InputContent type="password" placeholder="Senha" onChange={event => setPassword(event.target.value)} />
+          <FormContent onClick={event => registerNewUser(event)}>
+            <InputContent type="text" placeholder="Nome" onChange={event => setName(event.target.value)} required/>
+            <InputContent type="email" placeholder="Email" onChange={event => setEmail(event.target.value)} required/>
+            <InputContent type="password" placeholder="Senha" onChange={event => setPassword(event.target.value)} required/>
             <ButtonInitial text="Criar conta"/>
           </FormContent>
 
