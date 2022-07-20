@@ -29,9 +29,14 @@ const DivMain = styled.div`
     margin-bottom: 30px;
   }
 
-  a:last-child {
+  div:last-child {
+    display: flex;
+    gap: 20px;
     margin-top: -20px;
     align-self: flex-end;
+  }
+
+  div:last-child a {
     color: #DE3557;
     text-decoration: underline;
     font-weight: bold;

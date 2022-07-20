@@ -46,7 +46,11 @@ export const Home = () => {
           <InputContent type="password" placeholder="Senha" onChange={event => setPassword(event.target.value)} />
           <ButtonInitial text="Login"/>
         </FormContent>
-        <Link to="/user/new">Criar conta</Link>
+        <div>
+          <Link to="/recipes">Ver salas</Link>
+          <Link to="/user/new">Criar conta</Link>
+        </div>
+       
       </DivMain>
     </MainContent>
     <SectionMain/>

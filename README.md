@@ -8,8 +8,8 @@
 ## Requisitos Funcionais
 
 * Criar usuário na plataforma
-* Registrar alimentos
-* Criar receitas com os alimentos
+* Registrar Receitas
+
 
 
 ## Regras de negocio 
